@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.koxno.nftwallet.domain.NFTRepository
 import com.koxno.nftwallet.domain.entity.ChainValues
 import com.koxno.nftwallet.domain.entity.NFT
+import com.koxno.nftwallet.presentation.common.SingleLiveEvent
 import kotlinx.coroutines.launch
 
 class NFTViewModel(
@@ -16,6 +17,9 @@ class NFTViewModel(
     private val _countState = MutableLiveData(0)
     val countState: LiveData<Int> = _countState
 
+    private val _openDetailAction = SingleLiveEvent<NFT>()
+    val openDetailAction: LiveData<NFT> = _openDetailAction
+
     private val _nftsState = MutableLiveData<List<NFT>>()
     val nftState :LiveData<List<NFT>> = _nftsState
 
@@ -24,6 +28,10 @@ class NFTViewModel(
             val nfts: List<NFT> = nftRepository.getNftacc(ChainValues.ethereum, account = String(), 1)
             _nftsState.value = nfts
         }
+    }
+
+    fun onNFTClicked(nft: NFT) {
+        _openDetailAction.value = nft
     }
 
     fun onAdd() {

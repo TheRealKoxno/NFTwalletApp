@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.koxno.nftwallet.R
 import com.koxno.nftwallet.databinding.NftsListBinding
@@ -17,9 +18,13 @@ class NFTFragment : BaseFragment(R.layout.nfts_list){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewBinding.nftDetails.setOnClickListener {
 
+        val NFTAdapter = NFTAdapter(viewModel::onNFTClicked)
+        with(viewBinding.nftList) {
+            adapter = NFTAdapter
+            layoutManager = LinearLayoutManager(context)
         }
+
     }
 
     override fun onDestroyView() {
