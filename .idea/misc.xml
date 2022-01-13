@@ -5,6 +5,7 @@
       <map>
         <entry key="app/src/main/res/drawable-v24/ic_baseline_image_24.xml" value="0.16574074074074074" />
         <entry key="app/src/main/res/drawable/ic_close_nft_detail.xml" value="0.16927083333333334" />
+        <entry key="app/src/main/res/layout/item_nft.xml" value="0.1" />
         <entry key="app/src/main/res/layout/main_activity.xml" value="0.12708333333333333" />
         <entry key="app/src/main/res/layout/nft_detail.xml" value="0.22339969796053485" />
         <entry key="app/src/main/res/layout/nfts_list.xml" value="0.1793478260869565" />
