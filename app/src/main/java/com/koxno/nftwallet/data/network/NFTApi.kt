@@ -9,6 +9,7 @@ interface NFTApi {
     @GET("/api.nftport.xyz/v0/accounts/account_address")
     suspend fun getNftacc(
         @Query("chain") chain: String,
+        @Query("account_address") account: String,
         @Query("page_number") page_number: Int,
     ): NftResponse
 

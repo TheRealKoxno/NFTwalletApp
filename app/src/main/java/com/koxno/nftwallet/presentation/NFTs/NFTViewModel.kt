@@ -21,7 +21,7 @@ class NFTViewModel(
 
     init {
         viewModelScope.launch {
-            val nfts: List<NFT> = nftRepository.getNftacc(ChainValues.ethereum, 1)
+            val nfts: List<NFT> = nftRepository.getNftacc(ChainValues.ethereum, account = String(), 1)
             _nftsState.value = nfts
         }
     }

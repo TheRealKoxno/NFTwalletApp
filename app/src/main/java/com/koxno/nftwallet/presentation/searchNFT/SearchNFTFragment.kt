@@ -24,15 +24,11 @@ class SearchNFTFragment : BaseFragment(R.layout.search_start_screen) {
         if (searchNFT == "") {
             searchNFT = viewBinding.searchNftToLayout.placeholderText.toString()
         }
-
-        viewModel.search(searchNFT)
-        searchNFTFragment = searchNFTFragment.newInstance(searchNFT)
-        showGallery()
     }
 
     private fun SearchState.getText(): String =
         when (this) {
-            SearchState.EMPTY -> "Введите адрес"
+            SearchState.EMPTY -> "Input ethereum address"
             SearchState.VALID -> ""
         }
 
