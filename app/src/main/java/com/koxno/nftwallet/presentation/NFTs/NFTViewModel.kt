@@ -8,20 +8,20 @@ import com.koxno.nftwallet.domain.NFTRepository
 import com.koxno.nftwallet.domain.entity.ChainValues
 import com.koxno.nftwallet.domain.entity.NFT
 import com.koxno.nftwallet.presentation.common.SingleLiveEvent
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class NFTViewModel(
+@HiltViewModel
+class NFTViewModel @Inject constructor(
     private val nftRepository: NFTRepository
 ) : ViewModel() {
 
-    private val _countState = MutableLiveData(0)
-    val countState: LiveData<Int> = _countState
+    private val _nftsState = MutableLiveData<List<NFT>>()
+    val nftState :LiveData<List<NFT>> = _nftsState
 
     private val _openDetailAction = SingleLiveEvent<NFT>()
     val openDetailAction: LiveData<NFT> = _openDetailAction
-
-    private val _nftsState = MutableLiveData<List<NFT>>()
-    val nftState :LiveData<List<NFT>> = _nftsState
 
     init {
         viewModelScope.launch {
@@ -32,9 +32,5 @@ class NFTViewModel(
 
     fun onNFTClicked(nft: NFT) {
         _openDetailAction.value = nft
-    }
-
-    fun onAdd() {
-        _countState.value = _countState.value!! + 1
     }
 }

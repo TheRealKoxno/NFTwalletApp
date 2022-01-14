@@ -11,7 +11,10 @@ import com.koxno.nftwallet.R
 import com.koxno.nftwallet.databinding.NftDetailBinding
 import com.koxno.nftwallet.domain.entity.NFT
 import com.koxno.nftwallet.presentation.common.BaseFragment
+import com.koxno.nftwallet.presentation.common.setImageUrl
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class NFTDetailFragment : BaseFragment(R.layout.nft_detail){
 
     companion object {
@@ -35,11 +38,18 @@ class NFTDetailFragment : BaseFragment(R.layout.nft_detail){
         super.onViewCreated(view, savedInstanceState)
         //lifecylceOwner при observe
         viewModel.nftState.observe(viewLifecycleOwner) { nft ->
-            viewBinding.textNFTDetail.text = nft.name.toString()
-            //viewBinding.imageNFTDetail.image = nft.image.toString()
+            viewBinding.textNFTDetail.text = nft.name
+            viewBinding.imageNFTDetail.setImageUrl(nft.image)
         }
-
+        viewModel.closeAction.observe(viewLifecycleOwner) {
+            closeScreen()
+        }
+        viewBinding.closeNftDetail.setOnClickListener {
+            viewModel.onClosePressed()
+        }
     }
 
+    private fun closeScreen() {
+        parentFragmentManager.popBackStack()
+    }
 }
-
