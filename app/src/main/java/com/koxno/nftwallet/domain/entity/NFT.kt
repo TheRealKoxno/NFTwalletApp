@@ -6,5 +6,5 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class NFT(
     val name: String,
-    val image: String
+    var image: String
 ): Parcelable

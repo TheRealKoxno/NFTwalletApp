@@ -5,5 +5,5 @@ import com.koxno.nftwallet.domain.entity.ChainValues
 
 interface NFTRepository {
 
-    suspend fun getNftacc(chainValues: ChainValues, account: String, page_number: Int): List<NFT>
+    suspend fun getNftacc(account: String, chainValues: ChainValues, page_number: Int): List<NFT>
 }

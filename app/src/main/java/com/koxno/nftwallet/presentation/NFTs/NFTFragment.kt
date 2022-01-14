@@ -1,5 +1,6 @@
 package com.koxno.nftwallet.presentation.NFTs
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
@@ -14,10 +15,18 @@ import com.koxno.nftwallet.presentation.common.navigate
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class NFTFragment : BaseFragment(R.layout.nfts_list){
+class NFTFragment constructor(
+    private val searchNFT : String
+): BaseFragment(R.layout.nfts_list){
 
     private val viewBinding by viewBinding(NftsListBinding::bind)
     private val viewModel by viewModels<NFTViewModel>()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        viewModel.start(searchNFT)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -26,6 +35,9 @@ class NFTFragment : BaseFragment(R.layout.nfts_list){
         with(viewBinding.nftList) {
             adapter = NFTAdapter
             layoutManager = LinearLayoutManager(context)
+        }
+        viewModel.nftState.observe(viewLifecycleOwner) {
+            NFTAdapter.submitList(it)
         }
 
         viewModel.openDetailAction.observe(viewLifecycleOwner) {

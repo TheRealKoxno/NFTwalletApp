@@ -33,6 +33,8 @@ class NFTAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         with(holder.binding) {
             val item = getItem(position)
+            if (item.image.isBlank())
+                item.image = "https://i.ibb.co/K2kX7XQ/photo-2020-06-07-19-06-50.jpg"
             itemNftImage.setImageUrl(item.image)
             root.setOnClickListener { onNFTClicked(item) }
         }

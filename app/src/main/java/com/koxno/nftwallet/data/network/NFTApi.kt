@@ -2,14 +2,15 @@ package com.koxno.nftwallet.data.network
 
 import com.koxno.nftwallet.data.network.entity.NftResponse
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface NFTApi {
 
-    @GET("/api.nftport.xyz/v0/accounts/account_address")
+    @GET("/v0/accounts/{account_address}")
     suspend fun getNftacc(
+        @Path("account_address") account: String,
         @Query("chain") chain: String,
-        @Query("account_address") account: String,
         @Query("page_number") page_number: Int,
     ): NftResponse
 

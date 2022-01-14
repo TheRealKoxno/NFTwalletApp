@@ -7,12 +7,12 @@ import com.koxno.nftwallet.domain.entity.ChainValues
 class NFTRepositoryImpl(
     private val nftApi: NFTApi
 ) : NFTRepository {
-    override suspend fun getNftacc(chainValues: ChainValues, account: String, page_number: Int): List<NFT> {
-        return nftApi.getNftacc(chain = chainValues.serverChains, account, page_number)
-            .nfts?.mapNotNull { Metadata ->
+    override suspend fun getNftacc(account: String, chainValues: ChainValues, page_number: Int): List<NFT> {
+        return nftApi.getNftacc(account, chainValues.serverChains, page_number)
+            .nfts?.mapNotNull { NftNw ->
                 NFT(
-                    name = Metadata.metadata?.name ?: return@mapNotNull null,
-                    image = Metadata.metadata?.image ?: return@mapNotNull null,
+                    name = NftNw.name ?: return@mapNotNull null,
+                    image = NftNw.fileUrl ?: return@mapNotNull null,
                 )
             } ?: emptyList()
     }

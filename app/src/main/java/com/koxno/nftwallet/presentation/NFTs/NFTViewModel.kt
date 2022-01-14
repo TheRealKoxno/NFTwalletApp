@@ -23,9 +23,9 @@ class NFTViewModel @Inject constructor(
     private val _openDetailAction = SingleLiveEvent<NFT>()
     val openDetailAction: LiveData<NFT> = _openDetailAction
 
-    init {
+    fun start(searchNFT : String) {
         viewModelScope.launch {
-            val nfts: List<NFT> = nftRepository.getNftacc(ChainValues.ethereum, account = String(), 1)
+            val nfts: List<NFT> = nftRepository.getNftacc(searchNFT, ChainValues.ethereum, 1)
             _nftsState.value = nfts
         }
     }

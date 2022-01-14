@@ -24,13 +24,13 @@ class NetworkModule {
 
     @Provides
     fun provideNFTApi(): NFTApi = Retrofit.Builder()
-        .baseUrl("https://stoplight.io")
+        .baseUrl("https://api.nftport.xyz")
         .client(
             OkHttpClient.Builder()
                 .addInterceptor { chain: Interceptor.Chain ->
                     val request = chain.request()
                         .newBuilder()
-                        .header("api_key", api_key)
+                        .header("Authorization", api_key)
                         .build()
 
                     chain.proceed(request)
