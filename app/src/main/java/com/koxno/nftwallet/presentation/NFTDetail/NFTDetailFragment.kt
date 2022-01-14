@@ -38,7 +38,8 @@ class NFTDetailFragment : BaseFragment(R.layout.nft_detail){
         super.onViewCreated(view, savedInstanceState)
         //lifecylceOwner при observe
         viewModel.nftState.observe(viewLifecycleOwner) { nft ->
-            viewBinding.textNFTDetail.text = nft.name
+            viewBinding.textNFTName.text = nft.name
+            viewBinding.textNFTDetail.text = nft.description
             viewBinding.imageNFTDetail.setImageUrl(nft.image)
         }
         viewModel.closeAction.observe(viewLifecycleOwner) {

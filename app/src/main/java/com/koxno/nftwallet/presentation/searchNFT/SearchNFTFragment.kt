@@ -8,6 +8,7 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.koxno.nftwallet.R
 import com.koxno.nftwallet.databinding.SearchStartScreenBinding
 import com.koxno.nftwallet.presentation.NFTs.NFTFragment
+import com.koxno.nftwallet.presentation.NFTs.SearchType
 import com.koxno.nftwallet.presentation.common.BaseFragment
 import com.koxno.nftwallet.presentation.common.navigate
 import dagger.hilt.android.AndroidEntryPoint
@@ -21,8 +22,11 @@ class SearchNFTFragment : BaseFragment(R.layout.search_start_screen) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewBinding.searchSubmit.setOnClickListener {
-            search()
+        viewBinding.searchOwned.setOnClickListener {
+            searchOwned()
+        }
+        viewBinding.searchCreated.setOnClickListener {
+            searchCreated()
         }
 
         viewModel.searchState.observe(viewLifecycleOwner) {
@@ -31,15 +35,18 @@ class SearchNFTFragment : BaseFragment(R.layout.search_start_screen) {
         }
     }
 
-    private fun search() {
-//        var searchNFT = viewBinding.searchNftToEdit.text.toString()
-//        if (searchNFT == "") {
-//            searchNFT = viewBinding.searchNftToLayout.placeholderText.toString()
-//        }
-        var searchNFT = viewBinding.searchNftToEdit.text.toString()
+    private fun searchOwned() {
+        val searchNFT = viewBinding.searchNftToEdit.text.toString()
         if (!viewModel.search(searchNFT))
             return
 
-        parentFragmentManager.navigate(NFTFragment(searchNFT))
+        parentFragmentManager.navigate(NFTFragment(SearchType.OWNED, searchNFT))
+    }
+    private fun searchCreated() {
+        val searchNFT = viewBinding.searchNftToEdit.text.toString()
+        if (!viewModel.search(searchNFT))
+            return
+
+        parentFragmentManager.navigate(NFTFragment(SearchType.CREATED, searchNFT))
     }
 }

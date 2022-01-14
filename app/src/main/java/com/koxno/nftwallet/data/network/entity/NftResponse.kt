@@ -10,6 +10,6 @@ data class NftResponse(
     val nfts: List<NftNw>?,
     @SerialName("response")
     val response: String?,
-    @SerialName("total")
-    val total: Int?
+//    @SerialName("total")
+//    val total: Int?
 )

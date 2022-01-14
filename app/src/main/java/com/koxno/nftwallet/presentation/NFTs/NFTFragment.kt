@@ -16,6 +16,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class NFTFragment constructor(
+    private val searchType: SearchType,
     private val searchNFT : String
 ): BaseFragment(R.layout.nfts_list){
 
@@ -25,7 +26,7 @@ class NFTFragment constructor(
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        viewModel.start(searchNFT)
+        viewModel.start(searchType, searchNFT)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -52,4 +53,8 @@ class NFTFragment constructor(
     override fun onDestroyView() {
         super.onDestroyView()
     }
+}
+
+enum class SearchType{
+    CREATED, OWNED
 }

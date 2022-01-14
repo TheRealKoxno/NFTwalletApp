@@ -8,10 +8,10 @@ import kotlinx.serialization.Serializable
 data class NftNw(
 //    @SerialName("cached_file_url")
 //    val cachedFileUrl: String?,
-    @SerialName("contract_address")
-    val contractAddress: String?,
-    @SerialName("creator_address")
-    val creatorAddress: String?,
+//    @SerialName("contract_address")
+//    val contractAddress: String?,
+//    @SerialName("creator_address")
+//    val creatorAddress: String?,
     @SerialName("description")
     val description: String?,
     @SerialName("file_url")

@@ -4,7 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/projects/MIPT/Android/NFTwalletApp/app/src/main/res/layout/main_activity.xml" value="0.20520833333333333" />
-        <entry key="..\:/projects/MIPT/Android/NFTwalletApp/app/src/main/res/layout/nft_detail.xml" value="0.27447916666666666" />
+        <entry key="..\:/projects/MIPT/Android/NFTwalletApp/app/src/main/res/layout/nft_detail.xml" value="0.33" />
+        <entry key="..\:/projects/MIPT/Android/NFTwalletApp/app/src/main/res/layout/nfts_list.xml" value="0.34646739130434784" />
         <entry key="..\:/projects/MIPT/Android/NFTwalletApp/app/src/main/res/layout/search_start_screen.xml" value="0.27447916666666666" />
         <entry key="app/src/main/res/drawable/ic_close_nft_detail.xml" value="0.16927083333333334" />
         <entry key="app/src/main/res/layout/main_activity.xml" value="0.12708333333333333" />

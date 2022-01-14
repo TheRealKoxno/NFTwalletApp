@@ -29,13 +29,22 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/search_submit"
+        android:id="@+id/search_owned"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Next"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="64dp"
+        android:text="Search owned"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <Button
+        android:id="@+id/search_created"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        />
+        android:text="Search created"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

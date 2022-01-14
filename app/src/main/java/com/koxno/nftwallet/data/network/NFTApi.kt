@@ -8,10 +8,16 @@ import retrofit2.http.Query
 interface NFTApi {
 
     @GET("/v0/accounts/{account_address}")
-    suspend fun getNftacc(
+    suspend fun getNftOwned(
         @Path("account_address") account: String,
         @Query("chain") chain: String,
         @Query("page_number") page_number: Int,
+    ): NftResponse
+
+    @GET("/v0/accounts/creators/{account_address}")
+    suspend fun getNftCreated(
+        @Path("account_address") account: String,
+        @Query("chain") chain: String,
     ): NftResponse
 
     companion object {

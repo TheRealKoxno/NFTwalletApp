@@ -23,9 +23,12 @@ class NFTViewModel @Inject constructor(
     private val _openDetailAction = SingleLiveEvent<NFT>()
     val openDetailAction: LiveData<NFT> = _openDetailAction
 
-    fun start(searchNFT : String) {
+    fun start(searchType: SearchType, searchNFT: String) {
         viewModelScope.launch {
-            val nfts: List<NFT> = nftRepository.getNftacc(searchNFT, ChainValues.ethereum, 1)
+            val nfts: List<NFT> = if (searchType == SearchType.OWNED)
+                nftRepository.getNftOwned(searchNFT, ChainValues.ethereum, 1)
+            else
+                nftRepository.getNftCreated(searchNFT, ChainValues.ethereum)
             _nftsState.value = nfts
         }
     }
