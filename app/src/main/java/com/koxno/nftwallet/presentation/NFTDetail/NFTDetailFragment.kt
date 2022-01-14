@@ -40,6 +40,10 @@ class NFTDetailFragment : BaseFragment(R.layout.nft_detail){
         viewModel.nftState.observe(viewLifecycleOwner) { nft ->
             viewBinding.textNFTName.text = nft.name
             viewBinding.textNFTDetail.text = nft.description
+            if (nft.image.endsWith(".svg")) {
+                // TODO: svg load
+                viewBinding.imageNFTDetail.setImageUrl("https://i.ibb.co/K2kX7XQ/photo-2020-06-07-19-06-50.jpg")
+            }
             viewBinding.imageNFTDetail.setImageUrl(nft.image)
         }
         viewModel.closeAction.observe(viewLifecycleOwner) {
@@ -52,5 +56,9 @@ class NFTDetailFragment : BaseFragment(R.layout.nft_detail){
 
     private fun closeScreen() {
         parentFragmentManager.popBackStack()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
     }
 }
